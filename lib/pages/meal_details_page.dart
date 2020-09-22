@@ -19,16 +19,16 @@ class MealDetial extends StatelessWidget {
         ingred: mealData.ingredients,
         steps: mealData.steps,
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.delete,
-        ),
-        onPressed: () {
-          Navigator.of(context).pop(
-            id,
-          );
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(
+      //     Icons.delete,
+      //   ),
+      //   onPressed: () {
+      //     Navigator.of(context).pop(
+      //       id,
+      //     );
+      //   },
+      // ),
     );
   }
 }

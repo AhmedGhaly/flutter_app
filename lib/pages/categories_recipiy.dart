@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:meatApp/models/meal.dart';
-import '../dummy/caregories_dummy.dart';
 import '../widgets/meal_Item.dart';
 
 class CatigoryRecipe extends StatefulWidget {
   static final routeName = '/category-meals';
+  final List<Meal> updatedMeals;
+  CatigoryRecipe(this.updatedMeals);
   @override
   _CatigoryRecipeState createState() => _CatigoryRecipeState();
 }
@@ -28,7 +29,7 @@ class _CatigoryRecipeState extends State<CatigoryRecipe> {
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       title = routesArgus['title'];
       final String id = routesArgus['id'];
-      cat = DUMMY_MEALS
+      cat = widget.updatedMeals
           .where((element) => element.categories.contains(id))
           .toList();
       changed = true;
@@ -36,11 +37,11 @@ class _CatigoryRecipeState extends State<CatigoryRecipe> {
     super.didChangeDependencies();
   }
 
-  void _removeItem(String id) {
-    setState(() {
-      cat.removeWhere((element) => element.id == id);
-    });
-  }
+  // void _removeItem(String id) {
+  //   setState(() {
+  //     cat.removeWhere((element) => element.id == id);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class _CatigoryRecipeState extends State<CatigoryRecipe> {
             imageUrl: cat[index].imageUrl,
             categories: cat[index].categories,
             title: cat[index].title,
-            removeItem: _removeItem,
+            // removeItem: _removeItem,
           );
         },
         itemCount: cat.length,

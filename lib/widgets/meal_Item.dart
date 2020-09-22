@@ -12,7 +12,7 @@ class MealItem extends StatelessWidget {
   final String title;
   final Affordability affordability;
   final List<String> categories;
-  final Function removeItem;
+  // final Function removeItem;
   MealItem({
     @required this.id,
     @required this.title,
@@ -21,18 +21,17 @@ class MealItem extends StatelessWidget {
     @required this.imageUrl,
     @required this.categories,
     @required this.duration,
-    @required this.removeItem,
+    // @required this.removeItem,
   });
 
   void showDetails(BuildContext context) {
-    Navigator.of(context)
-        .pushNamed(
-          MealDetial.detials,
-          arguments: id,
-        )
-        .then(
-          (value) => removeItem(id),
-        );
+    Navigator.of(context).pushNamed(
+      MealDetial.detials,
+      arguments: id,
+    );
+    // .then(
+    //   (value) => removeItem(id),
+    // );
   }
 
   @override

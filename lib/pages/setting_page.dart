@@ -2,31 +2,34 @@ import 'package:flutter/material.dart';
 
 import '../widgets/main_drawer.dart';
 
-class Setting extends StatefulWidget {
+class Setting extends StatelessWidget {
   static final settingRoute = '/setting';
+  final bool isGlutenFree;
+  final bool isVegetarian;
+  final bool isLactoseFree;
+  final bool isVegan;
+  final Function updatedValule;
 
-  @override
-  _SettingState createState() => _SettingState();
-}
-
-class _SettingState extends State<Setting> {
-  bool _isGlutenFree = false;
-
-  bool _isVegetarian = false;
-
-  bool _isLactoseFree = false;
-
-  bool _isVegan = false;
-
+  Setting({
+    @required this.updatedValule,
+    @required this.isGlutenFree,
+    @required this.isLactoseFree,
+    @required this.isVegan,
+    @required this.isVegetarian,
+  });
   Widget buildSwitchList({
     String title,
     String subTitle,
     bool currentValue,
-    Function updatedMethod,
   }) {
     return SwitchListTile(
       value: currentValue,
-      onChanged: updatedMethod,
+      onChanged: (value) {
+        updatedValule(
+          value,
+          title,
+        );
+      },
       title: Text(title),
       subtitle: Text(subTitle),
     );
@@ -58,42 +61,42 @@ class _SettingState extends State<Setting> {
                   buildSwitchList(
                     title: 'Gluten-Free',
                     subTitle: 'get all meal with Gluten-Free',
-                    currentValue: _isGlutenFree,
-                    updatedMethod: (newValue) {
-                      setState(() {
-                        _isGlutenFree = newValue;
-                      });
-                    },
+                    currentValue: isGlutenFree,
+                    // updatedMethod: (newValue) {
+                    //   setState(() {
+                    //     isGlutenFree = newValue;
+                    //   });
+                    // },
                   ),
                   buildSwitchList(
                     title: 'vegetarian-free',
                     subTitle: 'get all meal with vegetarian-free',
-                    currentValue: _isVegetarian,
-                    updatedMethod: (newValue) {
-                      setState(() {
-                        _isVegetarian = newValue;
-                      });
-                    },
+                    currentValue: isVegetarian,
+                    // updatedMethod: (newValue) {
+                    //   setState(() {
+                    //     isVegetarian = newValue;
+                    //   });
+                    // },
                   ),
                   buildSwitchList(
                     title: 'lacose-free',
                     subTitle: 'get all meal with lacose-free',
-                    currentValue: _isLactoseFree,
-                    updatedMethod: (newValue) {
-                      setState(() {
-                        _isLactoseFree = newValue;
-                      });
-                    },
+                    currentValue: isLactoseFree,
+                    // updatedMethod: (newValue) {
+                    //   setState(() {
+                    //     isLactoseFree = newValue;
+                    //   });
+                    // },
                   ),
                   buildSwitchList(
                     title: 'vegan-free',
                     subTitle: 'get all meal with vegan-free',
-                    currentValue: _isVegan,
-                    updatedMethod: (newValue) {
-                      setState(() {
-                        _isVegan = newValue;
-                      });
-                    },
+                    currentValue: isVegan,
+                    // updatedMethod: (newValue) {
+                    //   setState(() {
+                    //     isVegan = newValue;
+                    //   });
+                    // },
                   ),
                 ],
               ),
